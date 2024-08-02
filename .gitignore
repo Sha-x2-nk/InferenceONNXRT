@@ -1,0 +1,5 @@
+# directories misc
+.vscode/
+
+# build directories
+build/
