@@ -1,3 +1,6 @@
+#ifndef ONNX_HElPERS_ONNX_MODELS_HPP
+#define ONNX_HElPERS_ONNX_MODELS_HPP
+
 #include <onnxruntime/onnxruntime_cxx_api.h>
 
 #include <string>
@@ -41,3 +44,5 @@ class ONNXModel {
     */
     ~ONNXModel ();
 };
+
+#endif
