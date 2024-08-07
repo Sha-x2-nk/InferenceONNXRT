@@ -10,7 +10,7 @@ This project provides a simple C++ API for running inference on ONNX models usin
 * <b>Install/build ONNXRuntime</b>: Build ONNXRuntime from source and configure it according to the EPs you need, or install an existing build.
 
 ## Usage
-A simple example - main.cpp
+C++ inference example.
 ```cpp
 #include "ONNXModel.hpp"
 
