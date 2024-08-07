@@ -1,5 +1,8 @@
 # directories misc
 .vscode/
 
-# build directories
+# files mic
+.gitignore
+
+# directories build
 build/

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(FaceRecog LANGUAGES CXX)
+project(InferenceONNXRT LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -19,7 +19,7 @@ include_directories(include)
 link_directories(${ONNXRUNTIME_ROOT}/lib)
 
 set(SOURCES 
-            src/ONNXHelpers/ONNXModel.cpp
+            src/ONNXModel.cpp
 )
 
 add_executable(main main.cpp ${SOURCES})

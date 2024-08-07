@@ -1,4 +1,4 @@
-#include "ONNXHelpers/ONNXModel.hpp"
+#include "ONNXModel.hpp"
 
 #include <onnxruntime/onnxruntime_cxx_api.h>
 
