@@ -62,6 +62,7 @@ int main() {
     return 0;
 }
 ```
+An example CMakeLists.txt is provided to build the code.
 
 ## API Reference
 ### `ONNXModel`
