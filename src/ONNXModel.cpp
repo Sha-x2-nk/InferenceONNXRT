@@ -10,8 +10,8 @@
 
 ONNXModel::ONNXModel(const wchar_t* model_path, 
                     const std::string &EP, 
-                    const char* inp_node_name, std::vector<int64_t> &inp_shape, 
-                    const char* out_node_name, std::vector<int64_t> &out_shape) {
+                    const char* inp_node_name, const std::vector<int64_t> &inp_shape, 
+                    const char* out_node_name, const std::vector<int64_t> &out_shape) {
     // Step 1. Create env
     this->ort_env = new Ort::Env(ORT_LOGGING_LEVEL_WARNING, "Default");
 

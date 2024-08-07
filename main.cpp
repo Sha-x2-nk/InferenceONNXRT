@@ -4,34 +4,46 @@
 #include <chrono>
 int main() {
     /* 
-        The below constants are for this model.
-        Used "netron" for seeing various properties of ONNX Model
+        The below constants are for yolov8 face detector model.
+        Use "netron" for seeing various properties of ONNX Model.
     */
     const wchar_t* detector_path = L"C:/Users/shash/Documents/FaceRecog/models/yolov8n-face-lindevs.onnx";
-    std::vector<int64_t> inp_shape = {3, 640, 640};
-    std::vector<int64_t> out_shape = {5, 8400};
 
-    ONNXModel model(detector_path, "CPU", "images", inp_shape, "output0", out_shape);
+    // Execution Provider: "CPU", "CUDA", "OpenVINO", "TensorRT"
+    std::string execution_provider = "CPU";
 
-    /* according */
-    float* inp = new float[3 * 640 * 640];
+    // Input and output node names and shapes
+    const char* input_node_name = "images";
+    std::vector<int64_t> input_shape = {3, 640, 640}; // [C, H, W]
+
+    const char* output_node_name = "output0";
+    std::vector<int64_t> output_shape = {5, 8400}; 
+
+
+    ONNXModel model(detector_path, execution_provider, input_node_name, input_shape, output_node_name, output_shape);
+
+    /* 
+        Demo data 
+        [N C H W] = [20 3 640 640]
+    */
+    float* inp = new float[20 * 3 * 640 * 640];
     
     // Capture the start time
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start_time = std::chrono::high_resolution_clock::now();
 
-    std::vector<float> out = model.forward(inp); /* 5 x 8400*/
+    /* out.size : 20 x 5 x 8400 */
+    std::vector<float> out = model.forward(inp, /* batch_size = */ 20); 
     
     // Capture the end time
-    auto end = std::chrono::high_resolution_clock::now();
+    auto end_time = std::chrono::high_resolution_clock::now();
 
     // Calculate the duration
-    std::chrono::duration<double> duration = end - start;
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
     // Print the duration
-    std::cout << "\nFunction runtime: " << duration.count() << " seconds" << std::endl;
+    std::cout << "\nForward pass runtime: " << duration.count() << " milliseconds." << std::endl;
 
 
     std::cout<<"\n out.size(): "<<out.size();
     return 0;
-
 }

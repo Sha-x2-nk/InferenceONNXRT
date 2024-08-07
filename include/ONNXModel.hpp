@@ -25,14 +25,10 @@ class ONNXModel {
 
     public:
     
-    /*
-        model_path  wchar_t     path of the ONNX model.
-        EP:         string      Execution Provider          [Default, CUDA, OpenVINO, TensorRT]
-    */
-    ONNXModel(const wchar_t* model_path, 
-            const std::string &EP, 
-            const char* inp_node_name, std::vector<int64_t> &inp_shape,     /* inp_shape = [C, H, W]. Batch size given in forward pass. N, if given, will be ignored. */ 
-            const char* out_node_name, std::vector<int64_t> &out_shape);    /* same as inp_shape */
+    ONNXModel(const wchar_t* model_path, /* path of the ONNX model */
+            const std::string &EP, /*Execution Provider - [Default, CUDA, OpenVINO, TensorRT]*/
+            const char* inp_node_name, const std::vector<int64_t> &inp_shape,     /* inp_shape = [C, H, W]. Batch size given in forward pass. N, if given, will be ignored. */ 
+            const char* out_node_name, const std::vector<int64_t> &out_shape);    /* same as inp_shape */
     
     /*
         Forward pass

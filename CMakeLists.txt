@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(OpenCV REQUIRED)
 
-set(ONNXRUNTIME_ROOT "" CACHE PATH "Path to the ONNX Runtime library")
+set(ONNXRUNTIME_ROOT "" CACHE PATH "Path to the ONNX RT install DIR")
 
 set(ONNXRUNTIME_LIBS
                     onnxruntime.lib
